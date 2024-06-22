@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+    <style>
+        .whole_container{
+            text-align: center;
+        }
+        .button1 img{
+            height: 10vh;
+            margin-top: 50vh;
+            position:relative;
+            
+        }
+        /*results*/
+        #results{
+            overflow: hidden;
+            margin: auto;
+            position: absolute;
+            text-align: center;
+            display:none;
+            display: block;
+            margin-top: 5vh;
+            padding:10vh;
+            margin-left: 31%;
+            display: flex;
+            justify-content: space-between;
+
+        }
+        #results img{
+            margin-right: 10vh;
+        }
+       
+       
+        
+            /*text result*/
+            #resulting{
+                overflow: hidden;
+            margin: auto;
+            position: absolute;
+            text-align: center;
+            display:none;
+            display: block;
+          margin-left: 44%;
+            margin-top: 32vh;
+           font-family: Arial black;
+           font-size: 4vh;
+           justify-content: center;
+           align-items: center;       
+            }
+          
+        
+        
+      .font1{
+        font-family: Arial black;
+           font-size: 4vh;           
+           
+      }
+        
+
+
+    </style>
+</head>
+
+
+<body >
+
+<div class="whole_container">
+    <!--title-->
+<h1 class="font1">Rock Paper Scissor Game</h1>
+<!-- ito ay sa taas -->
+<h1 style="text-align: center;margin-top: 5vh;word-spacing: 10vh;font-family: Arial black;
+font-size: 4vh;;">Human Computer</h1>
+
+
+
+
+
+
+<!--resulta to-->
+<div id="results">
+    <p></p>
+</div>
+
+    <p id="resulting"></p>
+
+
+
+
+<!-- ito ung picture na tatlo-->
+<div class="button1">
+    <img  src="rock.jpeg" alt="Rock_button" onclick="playrps('rock')">
+    <img  src="papers.jpeg" alt="paper_button" onclick="playrps('papers')">
+    <img  src="scissors.jpeg" alt="scissors_button" onclick="playrps('scissors')">
+</div>
+
+</div>
+<!--function-->
+<script>
+function playrps(Human){
+    let choices=["rock","papers","scissors"];
+    let ai_choice=choices[Math.floor(Math.random() * choices.length)];
+//ito  yung function para sa if else
+    let result;
+    if (Human===ai_choice){
+        result="Draw";
+    } else if(
+        (Human==="rock" && ai_choice === "scissors")||
+        (Human==="papers" && ai_choice === "rock")||
+        (Human==="scissors" && ai_choice === "papers")
+    ){
+        result="You Wins";
+    } else{
+        result="AI Wins";
+    }
+//ito ay resulta
+    let resultElement=document.getElementById("results");
+    resultElement.innerHTML=
+    `<img src="${Human}.jpeg" style="padding_right:20vh;">`+`<img src="${ai_choice}.jpeg" >` 
+
+    let resultElementr=document.getElementById("resulting");
+    resultElementr.innerHTML=
+    `<p>${result}</p>`
+}
+</script>
+    
+</body>
+</html>
